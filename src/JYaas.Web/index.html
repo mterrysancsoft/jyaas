@@ -184,6 +184,10 @@
                 </div>
                 <div class="col-lg-9">
                     <ul class="list-inline banner-social-buttons">
+                        
+                        <li>
+                            <a href="https://github.com/mterrysancsoft/jyaas" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">GitHub</span></a>
+                        </li>
                         <li>
                             <a href="https://twitter.com/wgdude" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                         </li>
@@ -255,7 +259,7 @@
                     $('#callWorking').hide();
                     $('#callError').show();
                     $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
-                    console.log()
+                    console.log("Status: " + textStatus + "<br/>Error: " + errorThrown);
                 }
             });
         }            
@@ -265,7 +269,6 @@
             $('#cycler img.base').clone().prependTo('#cycler');
             $('#cycler img.base').last().removeClass('base').addClass('active');
             $('#cycler img').show();
-            // run every 4s
             setInterval('cycleImages()', 2000);
         })</script>
 
