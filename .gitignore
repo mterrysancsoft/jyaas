@@ -11,6 +11,9 @@ dist/
 *.userosscache
 *.sln.docstates
 
+# Configuration files - that may have credentials
+*.config
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
