@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Great gifts for that guy in her life.  He's the World's Greatest Dude who's banging your Mom.">
+    <meta name="keywords" content="Worlds Greatest Dude, stepdad, stepfather, mothers husband, step father, step dad, fathers day gifts, stepfather gifts, gift for moms boyfriend">
+
+
+    <title>Jian Yang as a Service - Perfect for Special Occasion.</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #cycler{position:relative;}
+        #cycler img{position:absolute;z-index:1;background-color:white;width:100%;height:100%;left:0;top:0;display:none}
+        #cycler img.active{z-index:3}
+        #cycler img.base{z-index:-1;position:static;display:block}
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Jian Yang as as Service</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        &nbsp;<img src="images/wgd-banner-white.png" class="img-responsive" style="margin:auto; width:100%;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.intro-header -->
+    <!-- Page Content -->
+    <a name="about"></a>
+    <div class="content-section-a">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">What if I told you there was a page on the Internet </h2>
+                    <p class="lead">
+                        where you could automatically make prank calls to all those fat, stupid con men and
+                        white witches with the push of a button?
+                    </p>
+                    <p class="lead">
+                        Perfect for special occasion.
+                    </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <div id="callForm">
+                        <h2 class="section-heading">Enter the phone number</h2>
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <div>
+                                    (<input type="text" id="phone-1" maxlength="3" placeholder="###" style="width:40px;font-size:18px;">)
+                                    <input type="text" id="phone-2" maxlength="3" placeholder="###" style="width:40px;font-size:18px;">-
+                                    <input type="text" id="phone-3" maxlength="4"  placeholder="####"style="width:80px;font-size:18px;">
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="lead">
+                            Then 
+                        </p>
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a onclick="makeTheCall();" class="btn btn-default btn-lg"><i class="fa fa-phone fa-fw"></i> <span class="network-name">Make the Call</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="callWorking" style="display:none;">
+                        <div>Working ...</div>
+                    </div>
+                    <div id="callSuccess" style="display:none;">
+                        <div>Call Completed!</div>
+                    </div>
+                    <div id="callError" style="display:none;">
+                        <div>Call Failed</div>
+                        <div id="callErrorMessage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.content-section-a -->
+    <div class="content-section-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">You don't have to like him,<br /> but you will respect him</h2>
+                    <p class="lead">
+                        Show your respect with a special gift.  Perfect for birthdays, anniversaries or any holiday - a gift that is truly better to give than receive.
+                    </p>
+                    <p class="lead">
+                        For free. Because, I'm rich.
+                    </p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6" id="cycler">
+                    <img class="img-responsive base" src="img/before.jpg" alt="">
+                    <img class="img-responsive" src="img/after.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.content-section-a -->
+    <a name="contact"></a>
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2>Contact Us</h2>
+                </div>
+                <div class="col-lg-9">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/wgdude" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="mailto:dude@yourmoms.haus" class="btn btn-default btn-lg"><i class="fa fa-envelope fa-fw"></i> <span class="network-name">Email</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.banner -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">
+                        Copyright &copy; 2017
+                        <span style="float:right;">Made with <img src="images/ohio.gif"> in CLE</span>
+                    </p>
+                    <p class="copyright text-muted small" style="float:right;"></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function cycleImages() {
+            var $active = $('#cycler .active');
+            var $next = ($active.next().not('.base').length > 0) ? $active.next().not('.base') : $('#cycler img').not('.base').first();
+            $next.css('z-index', 2);//move the next image up the pile
+            $active.fadeOut(500, function () {//fade out the top image
+                $active.css('z-index', 1).show().removeClass('active');//reset the z-index and unhide the image
+                $next.css('z-index', 3).addClass('active');//make the next image the top one
+            });
+        }
+
+        function makeTheCall() {
+            $('#callForm').hide();
+            $('#callWorking').show();
+            var phone = '1' + $("#phone-1").val() + $("#phone-2").val() + $("#phone-3").val();
+            console.log('phone='+phone);
+            $.ajax({
+                url: "http://jyaas.dev.sancsoft.net/api/call?phoneNumber=" + phone,
+                type: "POST",
+                success: function(){
+                    $('#callWorking').hide();
+                    $('#callSuccess').show();
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    $('#callWorking').hide();
+                    $('#callError').show();
+                    $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
+                    console.log()
+                }
+            });
+        }            
+
+
+        $(document).ready(function () {
+            $('#cycler img.base').clone().prependTo('#cycler');
+            $('#cycler img.base').last().removeClass('base').addClass('active');
+            $('#cycler img').show();
+            // run every 4s
+            setInterval('cycleImages()', 2000);
+        })</script>
+
+
+</body>
+
+</html>
