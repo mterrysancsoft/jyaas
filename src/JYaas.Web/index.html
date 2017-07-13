@@ -89,10 +89,10 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">What if I told you there was a page on the Internet </h2>
+                    <h2 class="section-heading">What if I told you there was a page on the Internet... </h2>
                     <p class="lead">
-                        where you could automatically make prank calls to all those fat, stupid con men and
-                        white witches with the push of a button?
+                        A page where you could automatically make prank calls to all those fat, stupid con men and
+                        white witches?
                     </p>
                     <p class="lead">
                         Perfect for special occasion.
@@ -135,16 +135,24 @@
                                 <a onclick="makeTheCall();" class="btn btn-default btn-lg"><i class="fa fa-phone fa-fw"></i> <span class="network-name">Make the Call</span></a>
                             </li>
                         </ul>
+                        <audio id="preview1" src="audio/1.wav" type="audio/wav"></audio>    
+                        <audio id="preview2" src="audio/2.wav" type="audio/wav"></audio>    
+                        <audio id="preview3" src="audio/3.wav" type="audio/wav"></audio>    
                     </div>
                     <div id="callWorking" style="display:none;">
                         <div>Working ...</div>
                     </div>
                     <div id="callSuccess" style="display:none;">
-                        <div>Call Completed!</div>
+                        <img class="img-responsive" src="img/dickisup.jpg" alt="">
+                        <p class="lead">
+                            Call completed.  Dick is up.
+                        </p>
                     </div>
                     <div id="callError" style="display:none;">
-                        <div>Call Failed</div>
-                        <div id="callErrorMessage"></div>
+                        <img class="img-responsive" src="img/ieatthefish.jpg" alt="">
+                        <p class="lead">
+                            Call failed.  I eat the fish.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -184,13 +192,12 @@
                 </div>
                 <div class="col-lg-9">
                     <ul class="list-inline banner-social-buttons">
-                        
                         <li>
                             <a href="https://github.com/mterrysancsoft/jyaas" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">GitHub</span></a>
                         </li>
-                        <li>
+                        <!--<li>
                             <a href="https://twitter.com/wgdude" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
+                        </li>-->
                         <li>
                             <a href="mailto:dude@yourmoms.haus" class="btn btn-default btn-lg"><i class="fa fa-envelope fa-fw"></i> <span class="network-name">Email</span></a>
                         </li>
@@ -244,12 +251,15 @@
         }
 
         function makeTheCall() {
+            var phone = '1' + $("#phone-1").val() + $("#phone-2").val() + $("#phone-3").val();
+            var msg = $( "#message" ).val();
+            if (phone.length !== 10) {
+                return;
+            }
             $('#callForm').hide();
             $('#callWorking').show();
-            var phone = '1' + $("#phone-1").val() + $("#phone-2").val() + $("#phone-3").val();
-            console.log('phone='+phone);
             $.ajax({
-                url: "http://jyaas.dev.sancsoft.net/api/call?phoneNumber=" + phone,
+                url: "http://jyaas.dev.sancsoft.net/api/call?phoneNumber=" + phone + "&messageId=" + msg,
                 type: "POST",
                 success: function(){
                     $('#callWorking').hide();
@@ -259,9 +269,20 @@
                     $('#callWorking').hide();
                     $('#callError').show();
                     $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
-                    console.log("Status: " + textStatus + "<br/>Error: " + errorThrown);
                 }
             });
+        }            
+
+        function previewTheCall() {
+            var m = $( "#message" ).val();
+            for (var i = 1; i <= 3; i++) {
+                if (m == i.toString()) {
+                    $("#preview" + i.toString()).get(0).currentTime = 0;
+                    $("#preview" + i.toString()).get(0).play();
+                } else {
+                    $("#preview" + i.toString()).get(0).pause();
+                }
+            }
         }            
 
 
