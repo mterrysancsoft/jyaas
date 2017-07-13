@@ -13,7 +13,7 @@ namespace JYaas.API.Controllers
     public class CallController : ApiController
     {
         // not mom, fridge, alone
-        protected long[] messages = { 5743849003, 5751567003, 5751568003 };
+        protected long[] messages = { 5754254003, 5754252003, 5754245003 };
 
         /// <summary>
         /// Send a Jian Yang call to the supplied phone number
