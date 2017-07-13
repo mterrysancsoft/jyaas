@@ -9,7 +9,7 @@ using CallfireApiClient.Api.CallsTexts.Model;
 
 namespace JYaas.API.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "get,post")]
+    [EnableCors(origins: "http://www.jyaas.com", headers: "*", methods: "get,post")]
     public class CallController : ApiController
     {
         // not mom, fridge, alone
