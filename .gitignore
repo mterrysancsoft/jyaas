@@ -12,7 +12,8 @@ dist/
 *.sln.docstates
 
 # Configuration files - that may have credentials
-*.config
+web.config
+app.config
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
