@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Web.Http.Cors;
+using Serilog;
 using CallfireApiClient;
 using CallfireApiClient.Api.CallsTexts.Model;
 
@@ -22,6 +23,7 @@ namespace JYaas.API.Controllers
         /// <param name="messageId">Receiving phone number in format 123456789</param>
         public void Post([FromUri]string phoneNumber, [FromUri]int messageId)
         {
+            Log.Information("Post phoneNumber={0} messageId={1}", phoneNumber, messageId);
             if (!Regex.Match(phoneNumber, @"^1([0-9]{10})$").Success)
             {
                 throw new Exception("Invalid phone number supplied (1234567890)");
@@ -52,6 +54,10 @@ namespace JYaas.API.Controllers
                 }
             };
             IList<Call> calls = client.CallsApi.Send(recipients);
+            foreach (Call c in calls)
+            {
+                Log.Information("Call {0}", c);
+            }
         }
     }
 }
