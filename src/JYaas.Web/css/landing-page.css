@@ -168,3 +168,8 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+p.fineprint {
+    font-size:12px;
+    font-weight:normal;
+}
