@@ -157,14 +157,16 @@
                         <audio id="preview2" src="audio/2.wav" type="audio/wav"></audio>    
                         <audio id="preview3" src="audio/3.wav" type="audio/wav"></audio>    
                         <audio id="nocredits" src="audio/no.wav" type="audio/wav"></audio>    
+                        <audio id="good" src="audio/good.wav" type="audio/wav"></audio>    
+                        <audio id="bad" src="audio/bad.wav" type="audio/wav"></audio>    
                     </div>
                     <div id="callWorking" style="display:none;">
                         <div>Working ...</div>
                     </div>
                     <div id="callSuccess" style="display:none;">
-                        <img class="img-responsive" src="img/dickisup.jpg" alt="">
+                        <img class="img-responsive" src="img/nothotdog.jpg" alt="">
                         <p class="lead">
-                            Call completed.  Dick is up.
+                            Call completed.  Hello, my cold friend.
                         </p>
                     </div>
                     <div id="callError" style="display:none;">
@@ -282,21 +284,30 @@
 
         function checkTheCredits() {
             $('#callForm').hide();
-            $('#callNoCredits').show();
-            $("#nocredits").get(0).currentTime = 0;
-            $("#nocredits").get(0).play();
-            return;
             $('#callWorking').show();
             $.ajax({
-                url: "https://api.jyaas.com/api/call?phoneNumber=" + phone + "&messageId=" + msg,
+                url: "https://api.jyaas.com/api/credits",
                 type: "GET",
-                success: function(){
-                    $('#callNoCredits').show();
+                success: function(data){
+                    $('#callWorking').hide();
+                    console.log("que");
+                    console.log(data);
+                    console.log("end");
+                    if (parseInt(data) < 10) {
+                        $('#callWorking').hide();
+                        $('#callNoCredits').show();
+                        $("#nocredits").get(0).currentTime = 0;
+                        $("#nocredits").get(0).play();
+                    } else {
+                        makeTheCall();
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     $('#callWorking').hide();
                     $('#callError').show();
                     $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
+                    $("#bad").get(0).currentTime = 0;
+                    $("#bad").get(0).play();
                 }
             });
         }            
@@ -307,19 +318,21 @@
             if (phone.length !== 11) {
                 return;
             }
-            $('#callForm').hide();
-            $('#callWorking').show();
             $.ajax({
                 url: "https://api.jyaas.com/api/call?phoneNumber=" + phone + "&messageId=" + msg,
                 type: "POST",
                 success: function(){
                     $('#callWorking').hide();
                     $('#callSuccess').show();
+                    $("#good").get(0).currentTime = 0;
+                    $("#good").get(0).play();
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) { 
                     $('#callWorking').hide();
                     $('#callError').show();
                     $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
+                    $("#bad").get(0).currentTime = 0;
+                    $("#bad").get(0).play();
                 }
             });
         }            
