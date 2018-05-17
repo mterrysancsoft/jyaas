@@ -150,12 +150,13 @@
                                 <a onclick="previewTheCall();" class="btn btn-default btn-lg"><i class="fa fa-volume-up fa-fw"></i> <span class="network-name">Preview</span></a>
                             </li>
                             <li>
-                                <a onclick="makeTheCall();" class="btn btn-default btn-lg"><i class="fa fa-phone fa-fw"></i> <span class="network-name">Make the Call</span></a>
+                                <a onclick="checkTheCredits();" class="btn btn-default btn-lg"><i class="fa fa-phone fa-fw"></i> <span class="network-name">Make the Call</span></a>
                             </li>
                         </ul>
                         <audio id="preview1" src="audio/1.wav" type="audio/wav"></audio>    
                         <audio id="preview2" src="audio/2.wav" type="audio/wav"></audio>    
                         <audio id="preview3" src="audio/3.wav" type="audio/wav"></audio>    
+                        <audio id="nocredits" src="audio/no.wav" type="audio/wav"></audio>    
                     </div>
                     <div id="callWorking" style="display:none;">
                         <div>Working ...</div>
@@ -170,6 +171,12 @@
                         <img class="img-responsive" src="img/ieatthefish.jpg" alt="">
                         <p class="lead">
                             Call failed.  I eat the fish.
+                        </p>
+                    </div>
+                    <div id="callNoCredits" style="display:none;">
+                        <img class="img-responsive" src="img/dickisup.jpg" alt="">
+                        <p class="lead">
+                            We're all out of call credits.
                         </p>
                     </div>
                 </div>
@@ -272,6 +279,27 @@
                 $next.css('z-index', 3).addClass('active');//make the next image the top one
             });
         }
+
+        function checkTheCredits() {
+            $('#callForm').hide();
+            $('#callNoCredits').show();
+            $("#nocredits").get(0).currentTime = 0;
+            $("#nocredits").get(0).play();
+            return;
+            $('#callWorking').show();
+            $.ajax({
+                url: "https://api.jyaas.com/api/call?phoneNumber=" + phone + "&messageId=" + msg,
+                type: "GET",
+                success: function(){
+                    $('#callNoCredits').show();
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                    $('#callWorking').hide();
+                    $('#callError').show();
+                    $('#callErrorMessage').html = "Status: " + textStatus + "<br/>Error: " + errorThrown; 
+                }
+            });
+        }            
 
         function makeTheCall() {
             var phone = '1' + $("#phone-1").val() + $("#phone-2").val() + $("#phone-3").val();
