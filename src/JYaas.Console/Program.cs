@@ -17,12 +17,16 @@ namespace JYaas
         static void Main(string[] args)
         {
             var client = new CallfireClient(ConfigurationManager.AppSettings["CallFireUser"], ConfigurationManager.AppSettings["CallFirePassword"]);
+            var account = client.MeApi.GetBillingPlanUsage();
+            int credits = (int)(account?.TotalRemainingCredits ?? 0);
+            Console.WriteLine("# of credits remaining {0}", credits);
 
             if ((args.Length == 0) || (!IsPhoneNumber(args[0])))
             {
                 Console.WriteLine("Usage: jyaas.console.exe [phonenumber:1234567890]");
                 return;
             }
+
 
             var recipients = new List<CallRecipient>
             {
