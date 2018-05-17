@@ -290,9 +290,6 @@
                 type: "GET",
                 success: function(data){
                     $('#callWorking').hide();
-                    console.log("que");
-                    console.log(data);
-                    console.log("end");
                     if (parseInt(data) < 10) {
                         $('#callWorking').hide();
                         $('#callNoCredits').show();
