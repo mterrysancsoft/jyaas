@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Configuration;
@@ -42,7 +43,8 @@ namespace JYaas.API.Controllers
             {
                 messageId = messageId - 1;
             }
-
+            // CallFire requires TLS 1.2
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var client = new CallfireClient(ConfigurationManager.AppSettings["CallFireUser"], ConfigurationManager.AppSettings["CallFirePassword"]);
             var recipients = new List<CallRecipient>
             {

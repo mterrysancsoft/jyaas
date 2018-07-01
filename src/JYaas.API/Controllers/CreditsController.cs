@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Web.Http;
 using System.Configuration;
 using System.Text.RegularExpressions;
@@ -21,6 +22,8 @@ namespace JYaas.API.Controllers
         public int Get()
         {
             Log.Information("Get credits");
+            // CallFire requires TLS 1.2
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var client = new CallfireClient(ConfigurationManager.AppSettings["CallFireUser"], ConfigurationManager.AppSettings["CallFirePassword"]);
             var account = client.MeApi.GetBillingPlanUsage();
             int credits = (int)(account?.TotalRemainingCredits ?? 0);
