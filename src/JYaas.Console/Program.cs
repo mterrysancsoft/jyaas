@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Net;
 using CallfireApiClient;
 using CallfireApiClient.Api.CallsTexts.Model;
 
@@ -16,6 +17,9 @@ namespace JYaas
 
         static void Main(string[] args)
         {
+            // CallFire requires TLS 1.2
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             var client = new CallfireClient(ConfigurationManager.AppSettings["CallFireUser"], ConfigurationManager.AppSettings["CallFirePassword"]);
             var account = client.MeApi.GetBillingPlanUsage();
             int credits = (int)(account?.TotalRemainingCredits ?? 0);
@@ -33,8 +37,8 @@ namespace JYaas
                 new CallRecipient
                 {
                     PhoneNumber = args[0],
-                    LiveMessageSoundId = 5743849003,
-                    MachineMessageSoundId = 5743849003
+                    LiveMessageSoundId = 12329299003,
+                    MachineMessageSoundId = 12329299003
                 }
             };
             IList<Call> calls = client.CallsApi.Send(recipients);
